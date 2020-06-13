@@ -1,0 +1,6 @@
+.modal-backdrop{
+    z-index: 999 !important;
+}
+.row{
+    margin-left: 0px; margin-right: 0px;
+}
