@@ -58,21 +58,42 @@
                 <h3 class="modal-title" id="modalNovoClienteCenterTitle">Novo cliente</h3>
             </div>
             <div class="modal-body">
-                <form @submit="formCliente">
+                <form @submit="formCliente" name="formularioCliente">
                     <div class="row">
                         <div class="form-group col-md-8">
                             <label>Nome:</label> <input type="text" class="form-control"
-                                name="nome" v-model="cliente.nome" id="nome" placeholder="Informe seu nome" required/>
+                                name="nome" v-model="cliente.nome" id="nome" required/>
                         </div>
 
                         <div class="form-group col-md-4">
                             <label>Apelido:</label> <input type="text" class="form-control"
-                                name="apelido" v-model="cliente.apelido" id="apelido" placeholder="Informe seu apelido" />
+                                name="apelido" v-model="cliente.apelido" id="apelido" />
                         </div>
 
                         <div class="form-group col-md-4">
                             <label>CPF:</label> 
-                                        <input type="text" name="cpf" v-model="cliente.cpf" v-mask="'###.###.###-##'" class="form-control" id="cpf" placeholder="Informe seu CPF" required />
+                                        <input type="text" name="cpf" v-model="cliente.cpf" v-mask="'###.###.###-##'" class="form-control" id="cpf" required />
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label>Celular*:</label> <input type="text" class="form-control"
+                                name="celular" id="celular" v-model="cliente.celular" v-mask="'(##) #####-####'"
+                                required />
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label>E-mail:</label> <input type="text" class="form-control"
+                                name="email" id="email" v-model="cliente.email" required />
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label>Função:</label> <input type="text" class="form-control"
+                                name="funcao" id="funcao" v-model="cliente.funcao" required />
+                        </div>
+                        
+                        <div class="form-group col-md-4">
+                            <label>Local de trabalho:</label> <input type="text" class="form-control"
+                                name="trabalho" id="trabalho" v-model="cliente.trabalho" />
                         </div>
 
                         <div class="col-md-4 form-check">
@@ -88,52 +109,20 @@
                                         </label>
                         </div>
 
-                        <div class="form-group col-md-4">
-                            <label>Telefone:</label> <input type="text" class="form-control"
-                                name="telefone" id="telefone" v-model="cliente.telefone" v-mask="['(##) ####-####']" placeholder="Informe numero de Telefone" />
-                        </div>
-
-                        <div class="form-group col-md-4">
-                            <label>Celular*:</label> <input type="text" class="form-control"
-                                name="celular" id="celular" v-model="cliente.celular" v-mask="'(##) #####-####'" placeholder="Informe numero de celular"
-                                required />
-                        </div>
-
-                        <div class="form-group col-md-4">
-                            <label>Função:</label> <input type="text" class="form-control"
-                                name="funcao" id="funcao" v-model="cliente.funcao" placeholder="Informe sua Função" required />
-                        </div>
-                        
-                        <div class="form-group col-md-4">
-                            <label>Trabalho:</label> <input type="text" class="form-control"
-                                name="trabalho" id="trabalho" v-model="cliente.trabalho"
-                                placeholder="Informe seu local de trabalho" />
-                        </div>
-
-
-
-                        <div class="form-group col-md-6">
-                            <label>E-mail:</label> <input type="text" class="form-control"
-                                name="email" id="email" v-model="cliente.email" placeholder="Informe seu seu e-mail"
-                                required />
-                        </div>
-
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-12">
                             <label>Endereço:</label> <input type="text" class="form-control"
-                                name="endereco" id="endereco" v-model="cliente.endereco" placeholder="Informe seu endereço"
-                                required />
-                        </div>
-
-                        <div class="form-group col-md-4">
-                            <label>Cidade:</label> <input type="text" class="form-control"
-                                name="cidade" id="cidade" v-model="cliente.cidade" placeholder="Informe sua cidade" required />
+                                name="endereco" id="endereco" v-model="cliente.endereco" required />
                         </div>
 
                         <div class="form-group col-md-4">
                             <label>Bairro:</label> <input type="text" class="form-control"
-                                name="bairro" id="bairro" v-model="cliente.bairro" placeholder="Informe seu Bairro" required />
+                                name="bairro" id="bairro" v-model="cliente.bairro" required />
                         </div>
-
+                        
+                        <div class="form-group col-md-4">
+                            <label>Cidade:</label> <input type="text" class="form-control"
+                                name="cidade" id="cidade" v-model="cliente.cidade" required />
+                        </div>
 
                         <div class="form-group  col-md-4">
                             <label>Estado:</label> <select id="estado" v-model="cliente.estado" name="estado"
@@ -236,23 +225,6 @@ const customStyles = {
                     headers:{'content-type':'application/json'}
                 }
 
-                // let formData = new FormData();
-                // formData.append('nome', this.nome);
-                // formData.append('apelido', this.apelido);
-                // formData.append('sexo', this.sexo);
-                // formData.append('cpf', this.cpf);
-                // formData.append('endereco', this.endereco);
-                // formData.append('bairro', this.bairro);
-                // formData.append('cidade', this.cidade);
-                // formData.append('estado', this.estado);
-                // formData.append('telefone', this.telefone);
-                // formData.append('celular', this.celular);
-                // formData.append('trabalho', this.trabalho);
-                // formData.append('funcao', this.funcao);
-                // formData.append('email', this.email);
-                // console.log(formData);
-
-
                 axios.post('/cliente/novo', this.cliente, config)
                     .then(function (response){
                         currentObj.success = response.data.success;
@@ -273,13 +245,13 @@ const customStyles = {
                             icon: 'error',
                             })
                     });
-                    this.cliente = "";
                             $('#modalNovoCliente').removeClass('in');
                             $('#modalNovoCliente').attr("aria-hidden","true");
                             $('#modalNovoCliente').css("display", "none");
                             $('.modal-backdrop').remove();
                             $('body').removeClass('modal-open');
-                    this.loadClientes();
+                            this.loadClientes();
+                            this.cliente = "";
             },
             loadClientes(){
                 axios.get('/listaclientes')

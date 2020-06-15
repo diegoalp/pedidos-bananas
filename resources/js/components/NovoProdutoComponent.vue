@@ -2,7 +2,7 @@
 <div>
 
     <!-- Início Formulário -->
-    <form @submit="formProduto">
+    <form id="formProduto" @submit="formProduto">
         <div class="row">
             <div class="col-md-8">
                 <div class="form-group col-md-12">
@@ -111,17 +111,26 @@
                 const config = {
                     headers:{'content-type':'application/json'}
                 }
-                console.log(this.produto);
                 axios.post('/produto/novo', this.produto, config)
                     .then(function (response){
                         currentObj.success = response.data.success;
                         Swal.fire({
                             position: 'center',
                             icon: 'success',
-                            title: 'Muito bom.',
-                            text: 'Novo produto cadastrado com sucesso',
-                            timer: 1500,
+                            title: 'Sucesso.',
+                            text: 'Deseja cadastrar outro produto?',
+                            showCancelButton: true,
+                            cancelButtonText: 'Não',
+                            showConfirmButton: true,
+                            confirmButtonText: 'Sim',
                         })
+                        .then((res) => {
+                            if(res.value){
+                                this.produto = "";
+                            }else{
+                                window.location.replace("/produtos");
+                            }
+                        });
                     })
                     .catch(function (error) {
 
@@ -132,7 +141,6 @@
                             icon: 'error',
                             })
                     });
-                    this.produto = "";
             },
             formCategoria(e){
                 e.preventDefault();

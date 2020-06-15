@@ -16,7 +16,6 @@ class CreatePedidosTable extends Migration
         Schema::create('pedidos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('codigo');
-            $table->date('dataVenda');
             $table->float('valorTotal');
             $table->integer('status');
             $table->string('forma_pagamento');
@@ -26,7 +25,6 @@ class CreatePedidosTable extends Migration
             $table->integer('cliente_id')->unsigned();
             $table->foreign('cliente_id')->references('id')->on('clientes');
             $table->string('loja');
-            $table->integer('situacao')->default(0);
             $table->timestamps();
         });
     }

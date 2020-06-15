@@ -40,14 +40,13 @@ class ClienteController extends Controller
             $cliente->nome = $request->input('nome');
             $cliente->cpf = $request->input('cpf');
             $cliente->sexo = $request->input('sexo');
-            $cliente->telefone = $request->input('telefone');
             $cliente->celular = $request->input('celular');
             $cliente->email = $request->input('email');
             $cliente->endereco = $request->input('endereco');
             $cliente->cidade = $request->input('cidade');
             $cliente->bairro = $request->input('bairro');
             $cliente->uf = $request->input('estado');
-            $cliente->localTrabalho = $request->input('trabalho');
+            $cliente->local_trabalho = $request->input('trabalho');
             $cliente->apelido = $request->input('apelido');
             $cliente->status = 1;
             $cliente->funcao = $request->input('funcao');
@@ -98,7 +97,7 @@ class ClienteController extends Controller
         $cliente->cidade = $request->input('cidade');
         $cliente->bairro = $request->input('bairro');
         $cliente->uf = $request->input('estado');
-        $cliente->localTrabalho = $request->input('trabalho');
+        $cliente->local_trabalho = $request->input('trabalho');
         $cliente->apelido = $request->input('apelido');
         $cliente->status = $request->input('status');;
         $cliente->dados_pessoais_id = $dados->id;

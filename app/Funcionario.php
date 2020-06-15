@@ -10,4 +10,8 @@ class Funcionario extends Model
 {
     use SoftDeletes;
     protected $dates = ['deleted_at'];
+
+    public function usuario(){
+        return $this->hasOne('App\User', 'id', 'id_usuario');
+    }
 }

@@ -26,6 +26,7 @@ Route::delete('/cliente/{id}', 'ClienteController@destroy');
 Route::get('/listafuncionarios', 'FuncionarioController@index');
 Route::post('/funcionario/novo', 'FuncionarioController@store');
 Route::delete('/funcionario/{id}', 'FuncionarioController@destroy');
+Route::post('/funcionario/attsenha/{id}','FuncionarioController@attSenha');
 
 Route::get('/listaprodutos', 'ProdutoController@index');
 Route::post('/produto/novo', 'ProdutoController@store');

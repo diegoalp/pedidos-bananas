@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Funcionario;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class FuncionarioController extends Controller
 {
@@ -14,7 +17,8 @@ class FuncionarioController extends Controller
      */
     public function index()
     {
-        //
+        $funcionarios = Funcionario::with('usuario')->get();
+        return json_encode($funcionarios);
     }
 
     /**
@@ -35,7 +39,32 @@ class FuncionarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $senha = Str::random(8);
+        $usuario = new User();
+        $usuario->name = $request->input('nome');
+        $usuario->email = $request->input('email');
+        $usuario->password = Hash::make($senha);
+        $usuario->user_type = $request->input('nivel_acesso');
+        $usuario->save();
+
+        if($usuario->id){
+            $funcionario = new Funcionario();
+            $funcionario->cpf = $request->input('cpf');
+            $funcionario->sexo = $request->input('sexo');
+            $funcionario->celular = $request->input('celular');
+            $funcionario->endereco = $request->input('endereco');
+            $funcionario->cidade = $request->input('cidade');
+            $funcionario->bairro = $request->input('bairro');
+            $funcionario->uf = $request->input('estado');
+            $funcionario->loja = $request->input('loja');;
+            $funcionario->cargo = $request->input('cargo');
+            $funcionario->id_usuario = $usuario->id;
+            $funcionario->save();
+
+            return response($senha);
+        }else{
+            return response(404);
+        }
     }
 
     /**
@@ -60,6 +89,15 @@ class FuncionarioController extends Controller
         //
     }
 
+    public function attSenha(Request $request, $id)
+    {
+        $usuario = User::find($id);
+        $usuario->password = Hash::make($request->input('novasenha'));
+        $usuario->save();
+
+        return response(200);
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -78,8 +116,11 @@ class FuncionarioController extends Controller
      * @param  \App\Funcionario  $funcionario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Funcionario $funcionario)
+    public function destroy($id)
     {
-        //
+        $funcionario = Funcionario::find($id);
+        $funcionario->delete();
+        $funcionario->usuario()->delete();
+        return response(200);
     }
 }

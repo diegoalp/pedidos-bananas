@@ -28,7 +28,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/funcionarios">
                 <i class="fas fa-fw fa-lock "></i>
                 <span>
                     Funcionários
@@ -45,5 +45,5 @@
 
             </a>
         </li>
-        <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalPedido"><i class="fas fa-arrow-circle-right text-aqua"></i> <span>NOVO PEDIDO</span></a></li>
+        <novopedido-component></novopedido-component>
     </ul>

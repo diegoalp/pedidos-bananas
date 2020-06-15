@@ -3,4 +3,8 @@
 }
 .row{
     margin-left: 0px; margin-right: 0px;
+}.modal-footer {
+    justify-content: flex-start;
+}.login-page, .register-page{
+    background-image: url('/imagens/textura-bg.png');
 }

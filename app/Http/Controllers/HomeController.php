@@ -43,6 +43,12 @@ class HomeController extends Controller
 
     public function funcionarios()
     {
-        return view('funcionarios');
+        $user = \Auth::user();
+        if($user->can('isAdmin')){
+            return view('funcionarios');
+        }else{
+            abort(403, 'Você não tem permissão para acessar esta página!');
+        }
+        
     }
 }

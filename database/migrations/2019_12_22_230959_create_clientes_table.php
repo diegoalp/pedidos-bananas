@@ -18,11 +18,10 @@ class CreateClientesTable extends Migration
             $table->string('nome');
             $table->string('cpf')->unique();
             $table->string('local_trabalho');
-            $table->string('apelido');
+            $table->string('apelido')->nullable();
             $table->integer('status');
             $table->string('funcao');
             $table->string('sexo');
-            $table->string('telefone')->nullable();
             $table->string('celular');
             $table->string('endereco');
             $table->string('cidade');

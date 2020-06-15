@@ -13,7 +13,7 @@
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
                 <div class="row">
-                    <div v-for="p in paginaDeProdutos" :key="p.id" class="col-md-3 col-sm-12">
+                    <div v-for="p in paginaDeProdutos" :key="p.id" class="col-md-4 col-sm-12">
                         <div class="info-box">
                             <span class="float-right">
                                 <button type="button" class="close" @click="removerProduto(p.id)" aria-label="Close">
@@ -56,7 +56,7 @@
                     </div>
                 </div>
                     <div class="text-center">
-                        <jw-pagination v-bind:items="lista" @changePage="onChangePage" :labels="customLabels" :styles="customStyles"></jw-pagination>
+                        <jw-pagination v-bind:items="lista" @changePage="onChangePage" :pageSize="15" :labels="customLabels" :styles="customStyles"></jw-pagination>
                     </div>
                 </div>
                 <!-- /.box-body -->

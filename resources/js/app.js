@@ -9,6 +9,7 @@ import VueMask from 'v-mask'
 import Swal from 'sweetalert2'
 import JwPagination from 'jw-vue-pagination'
 import {VMoney} from 'v-money'
+import Autocomplete from 'vuejs-auto-complete'
 
 
 
@@ -34,7 +35,9 @@ Vue.component('clientes-component', require('./components/ClientesComponent.vue'
 Vue.component('funcionarios-component', require('./components/FuncionariosComponent.vue').default);
 Vue.component('produtos-component', require('./components/ProdutosComponent.vue').default);
 Vue.component('novoproduto-component', require('./components/NovoProdutoComponent.vue').default);
+Vue.component('novopedido-component', require('./components/CriarNovoPedidoComponent.vue').default);
 Vue.component('jw-pagination', JwPagination);
+Vue.component('autocomplete', Autocomplete);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -43,5 +46,8 @@ Vue.component('jw-pagination', JwPagination);
  */
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    components: {
+        Autocomplete,
+    },
 });
