@@ -37,7 +37,7 @@ class CategoriaController extends Controller
     public function store(Request $request)
     {
         $categoria = new Categoria();
-        $categoria->nome = $request->input('nome');
+        $categoria->nome = mb_strtoupper($request->input('nome'));
         $categoria->save();
 
         return response(200);

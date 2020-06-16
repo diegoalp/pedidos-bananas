@@ -9,8 +9,7 @@ import VueMask from 'v-mask'
 import Swal from 'sweetalert2'
 import JwPagination from 'jw-vue-pagination'
 import {VMoney} from 'v-money'
-import Autocomplete from 'vuejs-auto-complete'
-
+import vSelect from "vue-select"
 
 
 require('./bootstrap');
@@ -19,6 +18,8 @@ window.Vue = require('vue');
 
 Vue.use(VueMask);
 Vue.use(require('vue-moment'));
+Vue.component("v-select", vSelect);
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -32,12 +33,13 @@ Vue.use(require('vue-moment'));
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('clientes-component', require('./components/ClientesComponent.vue').default);
+Vue.component('pedidos-component', require('./components/PedidosComponent.vue').default);
 Vue.component('funcionarios-component', require('./components/FuncionariosComponent.vue').default);
 Vue.component('produtos-component', require('./components/ProdutosComponent.vue').default);
 Vue.component('novoproduto-component', require('./components/NovoProdutoComponent.vue').default);
 Vue.component('novopedido-component', require('./components/CriarNovoPedidoComponent.vue').default);
+Vue.component('addproduto-component', require('./components/PedidoProdutoComponent.vue').default);
 Vue.component('jw-pagination', JwPagination);
-Vue.component('autocomplete', Autocomplete);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -47,7 +49,4 @@ Vue.component('autocomplete', Autocomplete);
 
 const app = new Vue({
     el: '#app',
-    components: {
-        Autocomplete,
-    },
 });

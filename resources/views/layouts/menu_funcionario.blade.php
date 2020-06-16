@@ -19,7 +19,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/pedidos">
             <i class="fas fa-align-justify"></i>
             <span>
                 Pedidos
@@ -27,5 +27,5 @@
 
         </a>
     </li>
-    <novopedido-component></novopedido-component>
+    <novopedido-component id_usuario="{{ Auth::user()->id }}"></novopedido-component>
 </ul>

@@ -9,4 +9,8 @@ class Cliente extends Model
 {
     use SoftDeletes;
     protected $dates = ['deleted_at'];
+
+    public function pedido(){
+        return $this->belongsTo('App\Pedido', 'id', 'cliente_id');
+    }
 }

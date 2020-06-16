@@ -37,19 +37,19 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
             $cliente = new Cliente();
-            $cliente->nome = $request->input('nome');
+            $cliente->nome = mb_strtoupper($request->input('nome'));
             $cliente->cpf = $request->input('cpf');
-            $cliente->sexo = $request->input('sexo');
+            $cliente->sexo = mb_strtoupper($request->input('sexo'));
             $cliente->celular = $request->input('celular');
-            $cliente->email = $request->input('email');
-            $cliente->endereco = $request->input('endereco');
-            $cliente->cidade = $request->input('cidade');
-            $cliente->bairro = $request->input('bairro');
-            $cliente->uf = $request->input('estado');
-            $cliente->local_trabalho = $request->input('trabalho');
-            $cliente->apelido = $request->input('apelido');
+            $cliente->email = mb_strtoupper($request->input('email'));
+            $cliente->endereco = mb_strtoupper($request->input('endereco'));
+            $cliente->cidade = mb_strtoupper($request->input('cidade'));
+            $cliente->bairro = mb_strtoupper($request->input('bairro'));
+            $cliente->uf = mb_strtoupper($request->input('estado'));
+            $cliente->local_trabalho = mb_strtoupper($request->input('trabalho'));
+            $cliente->apelido = mb_strtoupper($request->input('apelido'));
             $cliente->status = 1;
-            $cliente->funcao = $request->input('funcao');
+            $cliente->funcao = mb_strtoupper($request->input('funcao'));
             $cliente->save();
             return response(200);
     }
@@ -87,20 +87,19 @@ class ClienteController extends Controller
     public function update(Request $request, Cliente $cliente)
     {
         $cliente = Cliente::find($id);
-        $cliente->nome = $request->input('nome');
+        $cliente->nome = mb_strtoupper($request->input('nome'));
         $cliente->cpf = $request->input('cpf');
-        $cliente->sexo = $request->input('sexo');
+        $cliente->sexo = mb_strtoupper($request->input('sexo'));
         $cliente->telefone = $request->input('telefone');
         $cliente->celular = $request->input('celular');
-        $cliente->email = $request->input('email');
+        $cliente->email = mb_strtoupper($request->input('email'));
         $cliente->endereco = $request->input('endereco');
-        $cliente->cidade = $request->input('cidade');
-        $cliente->bairro = $request->input('bairro');
-        $cliente->uf = $request->input('estado');
-        $cliente->local_trabalho = $request->input('trabalho');
-        $cliente->apelido = $request->input('apelido');
+        $cliente->cidade = mb_strtoupper($request->input('cidade'));
+        $cliente->bairro = mb_strtoupper($request->input('bairro'));
+        $cliente->uf = mb_strtoupper($request->input('estado'));
+        $cliente->local_trabalho = mb_strtoupper($request->input('trabalho'));
+        $cliente->apelido = mb_strtoupper($request->input('apelido'));
         $cliente->status = $request->input('status');;
-        $cliente->dados_pessoais_id = $dados->id;
         $cliente->funcao = $request->input('funcao');
         
         $cliente->save();

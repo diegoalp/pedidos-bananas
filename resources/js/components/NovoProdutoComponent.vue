@@ -7,11 +7,11 @@
             <div class="col-md-8">
                 <div class="form-group col-md-12">
                     <label>Nome:</label>
-                    <input type="text" class="form-control" name="nome" id="nome" v-model="produto.nome_produto" required />
+                    <input type="text" class="form-control text-uppercase" name="nome" id="nome" v-model="produto.nome_produto" required />
                 </div>
                 <div class="form-group col-md-12">
                     <label>Descrição:</label>
-                    <textarea class="form-control" name="descricao" id="descricao" v-model="produto.descricao" rows='5' required ></textarea>
+                    <textarea class="form-control text-uppercase" name="descricao" id="descricao" v-model="produto.descricao" rows='5' required ></textarea>
                 </div>
             </div>
             <div class="col-md-4">
@@ -25,7 +25,7 @@
                 </div>
                 <div class="form-group  col-md-10">
                     <label>Categoria:</label>
-                    <select id="categoria" name="categoria" class="form-control" v-model="produto.categoria_id" required> 
+                    <select id="categoria" name="categoria" class="form-control text-uppercase" v-model="produto.categoria_id" required> 
                         <option v-for="c in listaCategorias" :key="c.id" :value="c.id">{{ c.nome }}</option>
                     </select>
                     <a href="#" class="badge badge-info" data-toggle="modal" data-target="#modalNovaCategoria"><i class="fas fa-plus-circle"></i> adicionar</a>
@@ -50,7 +50,7 @@
                         <div class="row">
                             <div class="form-group col-md-12">
                             <label>Nome:</label> 
-                            <input type="text" class="form-control" name="nome" v-model="categoria.nome" id="nome" required/>
+                            <input type="text" class="form-control text-uppercase" name="nome" v-model="categoria.nome" id="nome" required/>
                         </div>
                         <div class="form-group col-md-12">
                             <button type="submit" class="btn btn-primary" >Enviar</button>

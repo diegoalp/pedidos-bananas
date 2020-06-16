@@ -7,4 +7,6 @@
     justify-content: flex-start;
 }.login-page, .register-page{
     background-image: url('/imagens/textura-bg.png');
+}.vs__dropdown-toggle{
+    border: none !important;
 }

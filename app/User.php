@@ -18,6 +18,10 @@ class User extends Authenticatable
         return $this->belongsTo('App\Funcionario', 'id', 'id_usuario');
     }
 
+    public function pedido(){
+        return $this->belongsTo('App\Pedido', 'id', 'usuario_id');
+    }
+
     /**
      * The attributes that are mass assignable.
      *

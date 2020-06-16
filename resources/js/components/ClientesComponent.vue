@@ -61,12 +61,12 @@
                 <form @submit="formCliente" name="formularioCliente">
                     <div class="row">
                         <div class="form-group col-md-8">
-                            <label>Nome:</label> <input type="text" class="form-control"
+                            <label>Nome:</label> <input type="text" class="form-control text-uppercase"
                                 name="nome" v-model="cliente.nome" id="nome" required/>
                         </div>
 
                         <div class="form-group col-md-4">
-                            <label>Apelido:</label> <input type="text" class="form-control"
+                            <label>Apelido:</label> <input type="text" class="form-control text-uppercase"
                                 name="apelido" v-model="cliente.apelido" id="apelido" />
                         </div>
 
@@ -82,17 +82,17 @@
                         </div>
 
                         <div class="form-group col-md-4">
-                            <label>E-mail:</label> <input type="text" class="form-control"
+                            <label>E-mail:</label> <input type="text" class="form-control text-uppercase"
                                 name="email" id="email" v-model="cliente.email" required />
                         </div>
 
                         <div class="form-group col-md-4">
-                            <label>Função:</label> <input type="text" class="form-control"
+                            <label>Função:</label> <input type="text" class="form-control text-uppercase"
                                 name="funcao" id="funcao" v-model="cliente.funcao" required />
                         </div>
                         
                         <div class="form-group col-md-4">
-                            <label>Local de trabalho:</label> <input type="text" class="form-control"
+                            <label>Local de trabalho:</label> <input type="text" class="form-control text-uppercase"
                                 name="trabalho" id="trabalho" v-model="cliente.trabalho" />
                         </div>
 
@@ -110,17 +110,17 @@
                         </div>
 
                         <div class="form-group col-md-12">
-                            <label>Endereço:</label> <input type="text" class="form-control"
+                            <label>Endereço:</label> <input type="text" class="form-control text-uppercase"
                                 name="endereco" id="endereco" v-model="cliente.endereco" required />
                         </div>
 
                         <div class="form-group col-md-4">
-                            <label>Bairro:</label> <input type="text" class="form-control"
+                            <label>Bairro:</label> <input type="text" class="form-control text-uppercase"
                                 name="bairro" id="bairro" v-model="cliente.bairro" required />
                         </div>
                         
                         <div class="form-group col-md-4">
-                            <label>Cidade:</label> <input type="text" class="form-control"
+                            <label>Cidade:</label> <input type="text" class="form-control text-uppercase"
                                 name="cidade" id="cidade" v-model="cliente.cidade" required />
                         </div>
 
@@ -251,7 +251,7 @@ const customStyles = {
                             $('.modal-backdrop').remove();
                             $('body').removeClass('modal-open');
                             this.loadClientes();
-                            this.cliente = "";
+                            // this.cliente = "";
             },
             loadClientes(){
                 axios.get('/listaclientes')

@@ -41,8 +41,8 @@ class FuncionarioController extends Controller
     {
         $senha = Str::random(8);
         $usuario = new User();
-        $usuario->name = $request->input('nome');
-        $usuario->email = $request->input('email');
+        $usuario->name = mb_strtoupper($request->input('nome'));
+        $usuario->email = mb_strtoupper($request->input('email'));
         $usuario->password = Hash::make($senha);
         $usuario->user_type = $request->input('nivel_acesso');
         $usuario->save();
@@ -52,12 +52,12 @@ class FuncionarioController extends Controller
             $funcionario->cpf = $request->input('cpf');
             $funcionario->sexo = $request->input('sexo');
             $funcionario->celular = $request->input('celular');
-            $funcionario->endereco = $request->input('endereco');
-            $funcionario->cidade = $request->input('cidade');
-            $funcionario->bairro = $request->input('bairro');
-            $funcionario->uf = $request->input('estado');
-            $funcionario->loja = $request->input('loja');;
-            $funcionario->cargo = $request->input('cargo');
+            $funcionario->endereco = mb_strtoupper($request->input('endereco'));
+            $funcionario->cidade = mb_strtoupper($request->input('cidade'));
+            $funcionario->bairro = mb_strtoupper($request->input('bairro'));
+            $funcionario->uf = mb_strtoupper($request->input('estado'));
+            $funcionario->loja = mb_strtoupper($request->input('loja'));
+            $funcionario->cargo = mb_strtoupper($request->input('cargo'));
             $funcionario->id_usuario = $usuario->id;
             $funcionario->save();
 

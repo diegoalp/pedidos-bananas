@@ -13,11 +13,15 @@
 
 Auth::routes();
 
+Route::middleware(['auth'])->group(function () {
+
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/clientes', 'HomeController@clientes')->name('clientes');
 Route::get('/produtos', 'HomeController@produtos')->name('produtos');
 Route::get('/produto/novo', 'HomeController@novoProduto')->name('novo-produto');
 Route::get('/funcionarios', 'HomeController@funcionarios')->name('funcionarios');
+Route::get('/pedidos', 'HomeController@pedidos')->name('pedidos');
+
 
 Route::get('/listaclientes', 'ClienteController@index');
 Route::post('/cliente/novo', 'ClienteController@store');
@@ -35,3 +39,16 @@ Route::delete('/produto/{id}', 'ProdutoController@destroy');
 
 Route::post('/categoria/nova', 'CategoriaController@store');
 Route::get('/listacategorias', 'CategoriaController@index');
+
+Route::get('/listapedidos','PedidoController@index');
+Route::get('/pedido/{codigo}','PedidoController@show');
+Route::post('/pedido/novo','PedidoController@store');
+Route::post('/pedido/{id}','PedidoController@update');
+
+
+Route::post('/pedido/addproduto','PedidoProdutoController@store');
+Route::get('/pedido/produtos/{id}','PedidoProdutoController@show');
+Route::delete('/pedido/produtos/{id}','PedidoProdutoController@destroy');
+Route::post('/pedido/attproduto/{id}','PedidoProdutoController@update');
+
+});

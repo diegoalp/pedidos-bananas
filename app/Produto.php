@@ -9,4 +9,8 @@ class Produto extends Model
 {
     use SoftDeletes;
     protected $dates = ['deleted_at'];
+
+    public function pedido(){
+        return $this->belongsTo('App\PedidoProduto', 'id', 'produto_id');
+    }
 }

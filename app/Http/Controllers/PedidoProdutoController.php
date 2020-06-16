@@ -35,7 +35,18 @@ class PedidoProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $produto = (object)$request->input('produto');
+        
+        $prod = new PedidoProduto();
+        $prod->quantidade = $request->input('quantidade');
+        $prod->valor = $produto->valor;
+        $prod->total = $request->input('quantidade') * $produto->valor;
+        $prod->produto_id = $produto->id;
+        $prod->pedido_id = $request->input('pedido');
+
+        $prod->save();
+
+        return response(200);
     }
 
     /**
@@ -44,9 +55,10 @@ class PedidoProdutoController extends Controller
      * @param  \App\PedidoProduto  $pedidoProduto
      * @return \Illuminate\Http\Response
      */
-    public function show(PedidoProduto $pedidoProduto)
+    public function show($id)
     {
-        //
+        $produtos = PedidoProduto::with('produto')->where('pedido_id', $id)->orderBy('id', 'desc')->get();
+        return json_encode($produtos);
     }
 
     /**
@@ -67,9 +79,21 @@ class PedidoProdutoController extends Controller
      * @param  \App\PedidoProduto  $pedidoProduto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PedidoProduto $pedidoProduto)
+    public function update(Request $request, $id)
     {
-        //
+        $pedidoProduto = PedidoProduto::find($id);
+        if( $request[0] == 0){
+            $pedidoProduto->delete();
+
+            return response(200);
+
+        }else{
+            $pedidoProduto->quantidade = $request[0];
+            $pedidoProduto->total = $pedidoProduto->valor * $request[0];
+            $pedidoProduto->save();
+
+        return response(200);
+        }
     }
 
     /**
@@ -78,8 +102,10 @@ class PedidoProdutoController extends Controller
      * @param  \App\PedidoProduto  $pedidoProduto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PedidoProduto $pedidoProduto)
+    public function destroy($id)
     {
-        //
+        $pedidoProduto = PedidoProduto::find($id);
+        $pedidoProduto->delete();
+        return \response(200);
     }
 }

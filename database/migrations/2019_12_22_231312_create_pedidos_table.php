@@ -15,16 +15,17 @@ class CreatePedidosTable extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('codigo');
+            $table->string('codigo')->unique();
             $table->float('valorTotal');
             $table->integer('status');
             $table->string('forma_pagamento');
             $table->float('juros')->nullable();
-            $table->integer('funcionario_id')->unsigned();
-            $table->foreign('funcionario_id')->references('id')->on('funcionarios');
+            $table->integer('usuario_id')->unsigned();
+            $table->foreign('usuario_id')->references('id')->on('users');
             $table->integer('cliente_id')->unsigned();
             $table->foreign('cliente_id')->references('id')->on('clientes');
             $table->string('loja');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

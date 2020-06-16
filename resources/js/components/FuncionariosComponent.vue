@@ -84,7 +84,7 @@
                         <div class="row">
                             <div class="form-group col-md-8">
                                 <label>Nome:</label> 
-                                <input type="text" class="form-control" name="nome" v-model="funcionario.nome" id="nome" required/>
+                                <input type="text" class="form-control text-uppercase" name="nome" v-model="funcionario.nome" id="nome" required/>
                             </div>
 
                             <div class="form-group col-md-4">
@@ -112,41 +112,41 @@
 
                             <div class="form-group col-md-4">
                                 <label>Função:</label> 
-                                <input type="text" class="form-control" name="funcao" id="funcao" v-model="funcionario.cargo" required />
+                                <input type="text" class="form-control text-uppercase" name="funcao" id="funcao" v-model="funcionario.cargo" required />
                             </div>
 
                             <div class="form-group col-md-3">
                                 <label>Nível de acesso:</label>
                                 <select class="form-control" name="trabalho" id="trabalho" v-model="funcionario.nivel_acesso">
-                                    <option value="admin">Admin</option>
-                                        <option value="funcionario">Funcionário</option>
+                                    <option value="admin">ADMIN</option>
+                                        <option value="funcionario">FUNCIONÁRIO</option>
                                 </select>
                             </div>
 
-                            <div class="form-group col-md-3" v-if="funcionario.nivel_acesso === 'funcionario'">
+                            <div class="form-group col-md-3" v-if="funcionario.nivel_acesso === 'FUNCIONARIO'">
                                 <label>Loja:</label>
                                 <select class="form-control" name="trabalho" id="trabalho" v-model="funcionario.loja">
-                                    <option value="Bananas I">Bananas I</option>
-                                        <option value="Bananas II">Bananas II</option>
+                                    <option value="BANANAS I">BANANAS I</option>
+                                        <option value="BANANAS II">BANANAS II</option>
                                 </select>
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label>E-mail:</label> <input type="text" class="form-control" name="email" id="email" v-model="funcionario.email" required />
+                                <label>E-mail:</label> <input type="text" class="form-control text-uppercase" name="email" id="email" v-model="funcionario.email" required />
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label>Endereço:</label> <input type="text" class="form-control"
+                                <label>Endereço:</label> <input type="text" class="form-control text-uppercase"
                                     name="endereco" id="endereco" v-model="funcionario.endereco" required />
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label>Cidade:</label> <input type="text" class="form-control"
+                                <label>Cidade:</label> <input type="text" class="form-control text-uppercase"
                                     name="cidade" id="cidade" v-model="funcionario.cidade" required />
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label>Bairro:</label> <input type="text" class="form-control"
+                                <label>Bairro:</label> <input type="text" class="form-control text-uppercase"
                                     name="bairro" id="bairro" v-model="funcionario.bairro" required />
                             </div>
 

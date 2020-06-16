@@ -37,8 +37,8 @@ class ProdutoController extends Controller
     public function store(Request $request)
     {
         $produto = new Produto();
-        $produto->nome_produto = $request->input('nome_produto');
-        $produto->descricao = $request->input('descricao');
+        $produto->nome_produto = mb_strtoupper($request->input('nome_produto'));
+        $produto->descricao = mb_strtoupper($request->input('descricao'));
         $produto->categoria_id = $request->input('categoria_id');
         $produto->codigo_barras = $request->input('codigo_barras');
         $produto->valor = str_replace('R$', '',str_replace(',', '.', str_replace('.', '', $request->input('valor'))));

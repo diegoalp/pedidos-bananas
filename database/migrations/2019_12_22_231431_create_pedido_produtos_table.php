@@ -22,6 +22,7 @@ class CreatePedidoProdutosTable extends Migration
             $table->foreign('produto_id')->references('id')->on('produtos');
             $table->integer('pedido_id')->unsigned();
             $table->foreign('pedido_id')->references('id')->on('pedidos');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
