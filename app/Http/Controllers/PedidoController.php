@@ -40,6 +40,7 @@ class PedidoController extends Controller
      */
     public function store(Request $request)
     {
+        
         $cliente = (object)$request->input('cliente');
         $qtdPedidos = Pedido::all();
         $dataAtual = new Carbon();

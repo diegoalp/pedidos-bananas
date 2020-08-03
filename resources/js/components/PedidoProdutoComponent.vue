@@ -48,13 +48,13 @@
                             <input type="hidden" id="pedido_id" class="form-control" :value="pedido_id">
                             <div class="form-group col-md-8">
                                 <label for="produto">Produto</label>
-                                <v-select :options="produtos" :getOptionLabel="produto => `${produto.id} | ${produto.nome_produto}`" class="form-control"  v-model="produto.produto" name="cliente" id="cliente">  
+                                <v-select :options="produtos" :getOptionLabel="produto => `${produto.id} | ${produto.nome_produto}`" class="form-control"  v-model="produto.produto" name="produto" id="produto" required>  
                                 </v-select>
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="quantidade">Quantidade</label>
-                                <input type="number" class="form-control" name="quantidade" v-model="produto.quantidade">
+                                <input type="number" class="form-control" name="quantidade" v-model="produto.quantidade" required>
                             </div>
                             <div class="form-group col-12">
                                 <button type="submit" class="btn btn-sm btn-info">ADICIONAR</button>
@@ -71,6 +71,8 @@
 </template>
 <script>
 import "vue-select/dist/vue-select.css";
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
 export default {
         name: "addproduto-component",
         props: ['pedido_id','pedido_status'],
@@ -82,7 +84,6 @@ export default {
                 produto: {
                     produto: '',
                     quantidade: '',
-                    pedido: this.pedido_id,
                 }
             }
         },
@@ -169,8 +170,8 @@ export default {
                 const config = {
                     headers:{'content-type':'application/json'}
                 }
-
-                axios.post('/pedido/addproduto', this.produto, config)
+                axios.post('/pedido/addproduto/' + this.pedido_id, this.produto, config)
+                
                 .then(function (response){
                         currentObj.success = response.data.success;
                     })

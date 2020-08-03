@@ -33,16 +33,15 @@ class PedidoProdutoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         $produto = (object)$request->input('produto');
-        
         $prod = new PedidoProduto();
         $prod->quantidade = $request->input('quantidade');
         $prod->valor = $produto->valor;
         $prod->total = $request->input('quantidade') * $produto->valor;
         $prod->produto_id = $produto->id;
-        $prod->pedido_id = $request->input('pedido');
+        $prod->pedido_id = $id;
 
         $prod->save();
 

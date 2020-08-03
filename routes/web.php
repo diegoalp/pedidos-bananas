@@ -46,7 +46,7 @@ Route::post('/pedido/novo','PedidoController@store');
 Route::post('/pedido/{id}','PedidoController@update');
 
 
-Route::post('/pedido/addproduto','PedidoProdutoController@store');
+Route::post('/pedido/addproduto/{id}','PedidoProdutoController@store');
 Route::get('/pedido/produtos/{id}','PedidoProdutoController@show');
 Route::delete('/pedido/produtos/{id}','PedidoProdutoController@destroy');
 Route::post('/pedido/attproduto/{id}','PedidoProdutoController@update');
