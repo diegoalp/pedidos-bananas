@@ -46,14 +46,14 @@
                     <form @submit.prevent="formProduto">
                         <div class="row">
                             <input type="hidden" id="pedido_id" class="form-control" :value="pedido_id">
-                            <div class="form-group col-md-8">
+                            <div class="form-group col-md-10">
                                 <label for="produto">Produto</label>
                                 <v-select :options="produtos" :getOptionLabel="produto => `${produto.id} | ${produto.nome_produto}`" class="form-control"  v-model="produto.produto" name="produto" id="produto" required>  
                                 </v-select>
                             </div>
 
-                            <div class="form-group col-md-4">
-                                <label for="quantidade">Quantidade</label>
+                            <div class="form-group col-md-2">
+                                <label for="quantidade">Qtd</label>
                                 <input type="number" class="form-control" name="quantidade" v-model="produto.quantidade" required>
                             </div>
                             <div class="form-group col-12">
@@ -89,6 +89,7 @@ export default {
         },
         methods:{
             subtrair(id,qtd){
+                var _this = this;
                 let currentObj = this;
                 let quantidade = qtd - 1;
                 const config = {
@@ -96,15 +97,15 @@ export default {
                 }
                 axios.post('/pedido/attproduto/' + id, quantidade, config)
                 .then(function (response){
-                        currentObj.success = response.data.success;
+                        _this.loadProdutosPedido();
                     })
                     .catch(function (error) {
 
                         currentObj.output = error;
                     });
-                    this.loadProdutosPedido();
             },
             adicionar(id,qtd){
+                var _this = this;
                 let currentObj = this;
                 let quantidade = qtd + 1;
                 const config = {
@@ -112,13 +113,12 @@ export default {
                 }
                 axios.post('/pedido/attproduto/' + id, quantidade, config)
                 .then(function (response){
-                        currentObj.success = response.data.success;
+                        _this.loadProdutosPedido();
                     })
                     .catch(function (error) {
 
                         currentObj.output = error;
                     });
-                    this.loadProdutosPedido();
             },
             finalizarPedido(){
                 let currentObj = this;
@@ -166,6 +166,7 @@ export default {
                 });
             },
             formProduto(){
+                var _this = this;
                 let currentObj = this;
                 const config = {
                     headers:{'content-type':'application/json'}
@@ -173,7 +174,9 @@ export default {
                 axios.post('/pedido/addproduto/' + this.pedido_id, this.produto, config)
                 
                 .then(function (response){
-                        currentObj.success = response.data.success;
+                        _this.loadProdutosPedido();
+                        _this.produto.produto = '';
+                        _this.produto.quantidade = '';
                     })
                     .catch(function (error) {
 
@@ -184,7 +187,6 @@ export default {
                             icon: 'error',
                             })
                     });
-                    this.loadProdutosPedido();
             },
             removerProduto(id){
                 let currentObj = this;
