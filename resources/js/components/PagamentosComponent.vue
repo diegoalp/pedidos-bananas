@@ -8,17 +8,19 @@
                         <tbody>
                             <tr>
                                 <th style="cursor: pointer;" v-on:click="ordemColuna('id')">#</th>
-                                <th style="cursor: pointer;" v-on:click="ordemColuna('nome')">Cliente</th>
-                                <th style="cursor: pointer;" v-on:click="ordemColuna('celular')">Valor</th>
+                                <th style="cursor: pointer;" v-on:click="ordemColuna('cliente_id')">Cliente</th>
+                                <th style="cursor: pointer;" v-on:click="ordemColuna('valor')">Valor</th>
                                 <th style="cursor: pointer;" v-on:click="ordemColuna('data')">Data</th>
-                                <th style="cursor: pointer;" v-on:click="ordemColuna('vencimento')">Forma de pagamento</th>
+                                <th style="cursor: pointer;" v-on:click="ordemColuna('usuario_id')">Funcionário</th>
+                                <th style="cursor: pointer;" v-on:click="ordemColuna('forma_pagamento')">Forma de pagamento</th>
                                 <th></th>
                             </tr>
                             <tr v-for="p in paginaDePagamentos" :key="p.id">
-                                <td>{{p.id}}</td>
-                                <td>{{p.cliente_id}}</td>
+                                <td>{{ p.id }}</td>
+                                <td>{{ p.cliente.nome }}</td>
                                 <td>R$ {{formatMoeda(p.valor)}}</td>
                                 <td>{{ p.created_at | moment("DD/MM/YYYY")}}</td>
+                                <td>{{ p.usuario.name }}</td>
                                 <td>{{ p.forma_pagamento }}</td>
                             </tr>
                         </tbody>

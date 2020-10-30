@@ -27,5 +27,14 @@
 
         </a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/pagamentos">
+            <i class="fas fa-money-bill"></i>
+            <span>
+                Pagamentos
+            </span>
+
+        </a>
+    </li>
     <novopedido-component id_usuario="{{ Auth::user()->id }}"></novopedido-component>
 </ul>

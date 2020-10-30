@@ -16,7 +16,7 @@ class PagamentoController extends Controller
      */
     public function index()
     {
-        $pagamentos = Pagamento::all();
+        $pagamentos = Pagamento::with('cliente')->with('usuario')->get();
 
         return json_encode($pagamentos);
     }
