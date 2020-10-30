@@ -9,4 +9,6 @@
     background-image: url('/imagens/textura-bg.png');
 }.vs__dropdown-toggle{
     border: none !important;
+}.table-striped .form-check-input{
+    margin-left: 0 !important;
 }

@@ -1,43 +1,6 @@
 <template>
 <div>   
-            <li class="nav-item"><a class="nav-link" href="#" @click="loadClientes();" data-toggle="modal" data-target="#modalPagamengo"><i class="fas fa-arrow-circle-right text-aqua"></i> <span>NOVO PEDIDO</span></a></li>
-            <!-- Modal novo Pedido -->
-                    <div class="modal fade" id="modalPedido" tabindex="-1" role="dialog" aria-labelledby="modalPagamengoCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="modalPagamengoCenterTitle">Novo pagamento</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <form class="form-horizontal" @submit.prevent="formPagamento">
-                                <div class="modal-body">
-
-                                        <input type="hidden" id="id_usuario" class="form-control" :value="id_usuario">
-                                            <label for="cliente">Cliente</label>
-                                            <div class="form-group row">
-                                                <v-select :options="clientes" :getOptionLabel="cliente => `${cliente.id} | ${cliente.nome}`" class="form-control" v-model="pedido.cliente" name="cliente" id="cliente">
-                                                    
-                                                </v-select>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label for="loja">Loja</label>
-                                                <select name="loja" id="loja" class="form-control" v-model="pedido.loja" required>
-                                                    <option value="Bananas 1">Bananas 1</option>
-                                                    <option value="Bananas 2">Bananas 2</option>
-                                                </select>
-                                            </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary">AVANÇAR</button>
-                                </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-            <!-- Fim Formulário Pedido -->
+            
 </div>
 </template>
 <script>

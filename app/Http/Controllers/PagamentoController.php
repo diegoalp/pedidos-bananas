@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Pagamento;
+use App\PagamentoPedido;
+use App\Pedido;
 use Illuminate\Http\Request;
 
 class PagamentoController extends Controller
@@ -14,7 +16,9 @@ class PagamentoController extends Controller
      */
     public function index()
     {
-        //
+        $pagamentos = Pagamento::all();
+
+        return json_encode($pagamentos);
     }
 
     /**
@@ -34,8 +38,30 @@ class PagamentoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $usuario = \Auth::user();
+        $cliente = (object)$request->cliente['id'];
+        $pagamento = new Pagamento();
+        $pagamento->usuario_id = $usuario->id;
+        $pagamento->cliente_id = $request->input('cliente')['id'];
+        $pagamento->valor = $request->valor_total;
+        $pagamento->forma_pagamento = $request->forma_pagamento;
+        $pagamento->save();
+
+        if($pagamento->id){
+            foreach($request->pedidos as $p){
+                $pagped = new PagamentoPedido();
+                $pagped->pagamento_id = $pagamento->id;
+                $pagped->pedido_id = $p['id'];
+                $pagped->save();
+
+                $pedido = Pedido::find($p['id']);
+                $pedido->status = 2;
+                $pedido->update();
+            }
+        }
+
+        return response(200);
     }
 
     /**

@@ -56,4 +56,9 @@ class HomeController extends Controller
         }
         
     }
+
+    public function pagamentos()
+    {
+        return view('pagamentos');
+    }
 }

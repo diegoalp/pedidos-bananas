@@ -28,8 +28,17 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="/pagamentos">
+                <i class="fas fa-money-bill"></i>
+                <span>
+                    Pagamentos
+                </span>
+
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="/funcionarios">
-                <i class="fas fa-fw fa-lock "></i>
+                <i class="fas fa-fw fa-lock"></i>
                 <span>
                     Funcionários
                 </span>

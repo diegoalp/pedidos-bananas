@@ -34,6 +34,7 @@ Vue.component("v-select", vSelect);
 
 Vue.component('clientes-component', require('./components/ClientesComponent.vue').default);
 Vue.component('pedidos-component', require('./components/PedidosComponent.vue').default);
+Vue.component('pagamentos-component', require('./components/PagamentosComponent.vue').default);
 Vue.component('funcionarios-component', require('./components/FuncionariosComponent.vue').default);
 Vue.component('produtos-component', require('./components/ProdutosComponent.vue').default);
 Vue.component('novoproduto-component', require('./components/NovoProdutoComponent.vue').default);

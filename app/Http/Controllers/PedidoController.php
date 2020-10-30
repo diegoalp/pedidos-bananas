@@ -32,6 +32,14 @@ class PedidoController extends Controller
         //
     }
 
+    public function pedidosCliente($id){
+        $pedidos = Pedido::where('cliente_id', '=', $id)
+        ->where('status', '=', 1)
+        ->get();
+
+        return json_encode($pedidos);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
